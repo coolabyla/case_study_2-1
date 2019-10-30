@@ -6,14 +6,14 @@
 # localization
 import local as lc
 category = input(lc.QUESTION1)
-deduction = int(input(lc.QUESTION3))
+deduction = int(input(lc.QUESTION2))
 
 # string constants
 name_month = [lc.JAN, lc.FEB, lc.MAR, lc.APR, lc.MAY, lc.JUN, lc.JUL, lc.AUG, lc.SEP, lc.OCT, lc.NOV, lc.DEC]
 
 annual_income = 0
 for month in range(12):
-    income = int(input(lc.QUESTION2.format(name_month[month])))
+    income = int(input(lc.QUESTION3.format(name_month[month])))
     annual_income += income
 print(annual_income)
 
