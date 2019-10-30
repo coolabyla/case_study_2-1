@@ -3,30 +3,17 @@
 #               Alexandra Kozadeeva ()
 #               Anzhelika Kurepova ()
 
-JAN = 'январе'
-FEB = 'феврале'
-MAR = 'марте'
-APR = 'апреле'
-MAY = 'мае'
-JUN = 'июне'
-JUL = 'июле'
-AUG = 'августе'
-SEP = 'сентябре'
-OCT = 'октябре'
-NOV = 'ноябре'
-DEC = 'декабре'
-QUESTION1 = 'К какой категории вас можно отнести? '
-QUESTION2 = 'Сколько денег вы заработали в {}: '
-QUESTION3 = 'Какой у вас необлагаемый налогом доход? '
-category = input(QUESTION1)
-deduction = int(input(QUESTION3))
+# localization
+import local as lc
+category = input(lc.QUESTION1)
+deduction = int(input(lc.QUESTION3))
 
 # string constants
-name_month = [JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC]
+name_month = [lc.JAN, lc.FEB, lc.MAR, lc.APR, lc.MAY, lc.JUN, lc.JUL, lc.AUG, lc.SEP, lc.OCT, lc.NOV, lc.DEC]
 
 annual_income = 0
 for month in range(12):
-    income = int(input(QUESTION2.format(name_month[month])))
+    income = int(input(lc.QUESTION2.format(name_month[month])))
     annual_income += income
 print(annual_income)
 
@@ -76,18 +63,18 @@ elif category == 'один субъект' and annual_income >= 406_751:
 # TODO: (Nikita) single parent
 if category == 'один субъект' and annual_income >= 0 and annual_income <= 12950:
     print(0.1 * (annual_income - deduction))
-elif category == 'один субъект' and annual_income >= 12951 and annual_income <= 49_400:
-    print(0.15 * (annual_income - 12951 - deduction) + 0.1 * (12951 - 0))
+elif category == 'один субъект' and annual_income >= 12_951 and annual_income <= 49_400:
+    print(0.15 * (annual_income - 12_951 - deduction) + 0.1 * (12951 - 0))
 elif category == 'один субъект' and annual_income >= 49_401 and annual_income <= 127_550:
-    print(0.25 * (annual_income - 49_401 - deduction) + 0.1 * (9_076 - 0) + 0.15 * (49_401 - 12951))
+    print(0.25 * (annual_income - 49_401 - deduction) + 0.1 * (9_076 - 0) + 0.15 * (49_401 - 12_951))
 elif category == 'один субъект' and annual_income >= 127_551 and annual_income <= 206_600:
-    print(0.28 * (annual_income - 127_551 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12951) +
+    print(0.28 * (annual_income - 127_551 - deduction) + 0.1 * (12_951 - 0) + 0.15 * (49_401 - 12_951) +
           + 0.25 * (127_551 - 49_401))
 elif category == 'один субъект' and annual_income >= 206_601 and annual_income <= 405_100:
-    print(0.33 * (annual_income - 206_601 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12951) +
+    print(0.33 * (annual_income - 206_601 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12_951) +
           + 0.25 * (127_551 - 49_401) + 0.28 * (206_601 - 127_551))
 elif category == 'один субъект' and annual_income >= 405_101 and annual_income <= 432_200:
-    print(0.35 * (annual_income - 405_101 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12951) +
+    print(0.35 * (annual_income - 405_101 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12_951) +
          + 0.25 * (127_551 - 49_401) + 0.28 * (206_601 - 127_551) + 0.33 * (405_101 - 206_601))
 else:
     print(0.396 * (annual_income - 432_201 - deduction) + 0.1 * (12951 - 0) + 0.15 * (49_401 - 12951) +
